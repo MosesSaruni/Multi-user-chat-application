@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ClassRoom</title>
+        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="filler">
+            <h1>DST 4010</h1>
+        </div>
+
+        <div class="content">
+
+            <div class="user_input">
+                <form action="" method="POST">
+                    <div class="username">
+                        <input type="text" class="username" placeholder="Enter username" required/>
+                    </div>
+                    <br><br>
+                    <div class="message">
+                        <!-- <textarea name="message" id="message"  placeholder="Say Something..." required cols="35" rows="10" ></textarea> -->
+                        <input type="text" class="message" placeholder="Say something..." required/>
+                    </div>
+                    <br>
+                    <input class="sendButton" value="SEND" type="submit"/>
+                </form>
+            </div>
+
+            <div class = "chatbox">
+                <div class="spacer">
+                    <h3>Welcome to ClassRoom</h3>
+                    <div class="message_holder"></div>
+                </div>
+            </div>
+        </div>
+
+        
+
+       
+
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+        
+        <!-- <script src="/static/main.js"></script> -->
+        
+        <script>
+            var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+            socket.on('connect', function(){
+                socket.emit('my event', {
+                    data: 'User Connected'
+                })
+                var form = $('form').on('submit', function(e){
+                    e.preventDefault()
+                    let user_name = $('input.username').val()
+                    let user_input = $('input.message').val()
+                    socket.emit('my event', {
+                        user_name : user_name,
+                        message : user_input
+                    })
+                    $('input.message').val('').focus()
+                })
+            })
+
+            socket.on('my response', function(msg){
+                console.log(msg)
+                var today = new Date();
+                var time = " [" + today.getHours() + ":" + today.getMinutes() + "] ";
+                if (typeof msg.user_name !== 'undefined'){
+                    $('h3').remove()
+                    $('div.message_holder').append('<div><b>'+msg.user_name+'</b>'+' : '+msg.message+'<div style = "font-size:15px;" >'+time+'</div>' +'</div>'  )
+                }
+            })
+        </script>
+    </body>
+</html>

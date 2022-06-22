@@ -1,0 +1,120 @@
+body{
+    background-color: #36393e;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Source Code Pro', monospace;
+}
+
+.chatbox{
+    background-color: black;
+    color: white;
+    /* min-width: 200px; */
+    height: 500px;  
+    border-radius: 25px;
+    float: right;
+    width: 70%;
+}
+
+.sendButton{
+    float:right;
+    margin-right: 30px;
+    border-radius: 25px;
+    color: white;
+    background-color:#007fff ;
+}
+
+.filler{
+    background-color:#007fff;
+}
+
+.user_input{
+    float: left;
+    width: 25%;
+    height: 200px;
+    border: 2px solid #007fff;
+    border-radius: 20px;
+    /* padding: auto; */
+
+}
+
+.content{
+    margin-top : 100px;
+    margin-bottom: 100px;
+    margin-right: 75px;
+    margin-left: 75px;
+    height: 500px;
+}
+
+.username{
+    margin-left: 15px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    height: 30px;
+    width: 110px;
+    border-radius: 25px;
+    /* background-color: black;
+    color: white; */
+}
+
+.message{
+    height: 50px;
+    border-radius: 25px;
+    /* background-color: black;
+    color: white; */
+    width: 100%;
+    padding: 6px 30px;
+    /* margin: 8px 0; */
+    box-sizing: border-box;
+}
+
+input{
+    background-color: black;
+    color: white;
+    width: auto;
+}
+
+/* textarea{
+    width: 250px;
+} */
+
+/* @media screen and (min-width: 480px) {
+    textarea {
+        width: 250px;
+    }
+  } */
+
+/* .username1{
+    border-bottom: 2px white;
+} */
+
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+/* Track */
+::-webkit-scrollbar-track {
+background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
+
+.spacer{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 490px;
+    overflow-y: scroll;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y proximity;
+}
+
